@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Image Slider</title>
+  <link rel="stylesheet" href="style.css"> 
+</head>
+<body>
+  <div class="slide-container">
+<div id="arrow-left" class="arrow"></div>
+
+<div id="slider">
+  <div class="slide slide1">
+    <div class="slide-content">
+      <span> Wash Hands Regularly </span>
+    </div>
+  </div>
+  <div class="slide slide2">
+    <div class="slide-content">
+      <span> Use Mask </span>
+    </div>
+  </div>
+  <div class="slide slide3">
+    <div class="slide-content">
+      <span> Wear Mask </span>
+    </div>
+  </div>
+  <div class="slide slide4">
+    <div class="slide-content">
+      <span> Use Hand Sanitizer </span>
+    </div>
+  </div>
+</div>
+<div id="arrow-right" class="arrow"></div>
+
+    </div>
+<script>
+let sliderimages = document.querySelectorAll('.slide'),
+arrowleft = document.querySelector('#arrow-left'),
+arrowRight = document.querySelector('#arrow-right'),
+current=0;
+
+function reset(){
+  for(let i=0; i< sliderimages.length; i++){
+    sliderimages[i].style.display= 'none';
+  }
+}
+
+function startSlide(){
+
+  reset()
+  sliderimages[0].style.display='block';
+}
+function slideleft(){
+  reset()
+  sliderimages[current -1].style.display = 'block';
+  current--;
+}
+function slideRight(){
+  reset();
+  sliderimages[current + 1].style.display ='block';
+  current++;
+  
+}
+arrowleft.addEventListener('click',function(){
+  if(current === 0){current = sliderimages.length;
+
+  }
+  slideleft();
+});
+arrowRight.addEventListener('click',function(){
+  if(current === sliderimages.length - 1){current = -1
+
+  }
+  slideRight();
+});
+
+startSlide();
+</script>
+  </body>
+</html>
